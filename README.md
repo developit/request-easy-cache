@@ -120,6 +120,7 @@ Caching uses a compound key `{ url, options }`. Calls with identical `url` and `
 
 ## Version History
 
+* `1.2.0` - Support time strings for `cache.maxAge` via [ms](https://www.npmjs.com/package/ms).
 * `1.1.1` - Added preferred support for `.get()`. `.cached()` is now an alias.
 * `1.1.0` - Updated to be simpler and more similar to the [request] API (retains backwards compatibility).
 * `1.0.0` - Forked from [request-again], rewritten in ES6.
@@ -137,4 +138,4 @@ Caching uses a compound key `{ url, options }`. Calls with identical `url` and `
 
 [request]: https://www.npmjs.com/package/request
 [request-again]: https://github.com/hemphillcc/request-again
-[lru-cache]: https://npmjs.com/package/lru-cache
+[lru-cache]: https://www.npmjs.com/package/lru-cache

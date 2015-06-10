@@ -1,9 +1,10 @@
-import request from 'request';
+import internalRequest from 'request';
 import cache from 'lru-cache';
+import ms from 'ms';
 
 const CACHE_DEFAULTS = {
 	max: 100,
-	maxAge: 60000
+	maxAge: '1m'
 };
 
 
@@ -12,20 +13,27 @@ const CACHE_DEFAULTS = {
  *	@param {boolean} [opts.cacheHttpErrors=true]	Cache 4xx & 5xx responses?
  *	@param {object} [opts.cache={}]					Options for `lru-cache`
  *	@param {number} [opts.cache.max=100]			Maximum number of responses to cache
-*	@param {number} [opts.cache.maxAge=60000]		Maximum length of time to consider a cached result valid (default: 60s)
-*	@param {object} [request=global.request]		Optionally pass a `request` instance for DI.
+*	@param {number} [opts.cache.maxAge='1m']		Maximum length of time to consider a cached result valid.
+*	@param {object} [request]						Optionally pass a `request` instance for DI.
  */
 export class CachedRequest {
-    constructor(opts={}, request=global.request) {
+    constructor(opts={}, request=null) {
 		this.cacheHttpErrors = opts.cacheHttpErrors!==false;
-        this._request = request;
-        this.cacheOptions = extend({}, CACHE_DEFAULTS, opts.cache || {});
-    	this.cache = new cache(this.cacheOptions);
+        this._request = request || internalRequest;
+        this.cacheOptions = extend({}, CACHE_DEFAULTS);
+		this.enableCache(opts.cache || {});
     }
 
     enableCache(options={}) {
         extend(this.cacheOptions, options);
-    	this.cache = new cache(this.cacheOptions);
+		let opts = extend({}, this.cacheOptions);
+
+		// allow fancy time strings for maxAge
+		if (typeof opts.maxAge==='string') {
+			opts.maxAge = ms(opts.maxAge);
+		}
+
+    	this.cache = new cache(opts);
     	return this;
     }
 
@@ -69,7 +77,7 @@ export class CachedRequest {
 	}
 
     defaults(opts={}) {
-    	this._request = request.defaults(opts);
+    	this._request = this._request.defaults(opts);
     	return this;
     }
 
