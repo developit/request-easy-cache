@@ -37,7 +37,7 @@ export class CachedRequest {
 		return this;
 	}
 
-	get(...args) {
+	request(...args) {
 		let url, options, callback;
 		args.forEach( arg => {
 			switch (typeof arg) {
@@ -73,6 +73,10 @@ export class CachedRequest {
 			}
 			callback(null, res, clone(body));
 		});
+	}
+
+	get(...args) {
+		return this.request(...args);
 	}
 
 	// for old time's sake
