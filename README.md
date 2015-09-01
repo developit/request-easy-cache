@@ -120,6 +120,7 @@ Caching uses a compound key `{ url, options }`. Calls with identical `url` and `
 
 ## Version History
 
+* `1.3.0` - Passthrough support for non-`GET` requests, added `request(opts)` method.
 * `1.2.0` - Support time strings for `cache.maxAge` via [ms](https://www.npmjs.com/package/ms).
 * `1.1.1` - Added preferred support for `.get()`. `.cached()` is now an alias.
 * `1.1.0` - Updated to be simpler and more similar to the [request] API (retains backwards compatibility).
