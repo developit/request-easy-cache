@@ -1,6 +1,6 @@
 import mocha from 'mocha';
 import { expect } from 'chai';
-import request from '../index.es';
+import request from '../src/index';
 
 request.defaults({
 	timeout: 5000,
