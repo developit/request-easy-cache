@@ -68,7 +68,7 @@ export class CachedRequest {
 		this._request(url, options, (err, res, body) => {
 			if (err) return callback(err);
 
-			if (this.cacheHttpErrors!==false || (res.status && res.status<400)) {
+			if (this.cacheHttpErrors!==false || (res.statusCode && res.statusCode<400)) {
 				this._setCache(url, options, { res, body });
 			}
 			callback(null, res, clone(body));
