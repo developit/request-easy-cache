@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run-script lint && mocha --compilers js:babel/register tests/**/*.js",
-    "build": "babel src --source-root src -s -d .",
+    "build": "babel src --source-root src -s inline -d .",
     "lint": "jshint {src,tests}/**.js",
     "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
