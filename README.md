@@ -134,7 +134,7 @@ Caching uses a compound key `{ url, options }`. Calls with identical `url` and `
 [npm-downloads-image]: http://img.shields.io/npm/dm/request-easy-cache.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/request-easy-cache
 
-[travis-image]: http://img.shields.io/travis/developit/request-easy-cache.svg?style=flat-square
+[travis-image]: http://img.shields.io/travis/developit/request-easy-cache/master.svg?style=flat-square
 [travis-url]: http://travis-ci.org/developit/request-easy-cache
 
 [request]: https://www.npmjs.com/package/request
