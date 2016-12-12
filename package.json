@@ -33,7 +33,7 @@
     "chai": "^3.0.0",
     "jshint": "^2.8.0",
     "mocha": "^3.0.0",
-    "pre-commit": "^1.0.7"
+    "pre-commit": "^1.2.1"
   },
   "pre-commit": [
     "test",
