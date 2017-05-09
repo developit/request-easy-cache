@@ -2,6 +2,8 @@
 
 # request-easy-cache
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/developit/request-easy-cache.svg)](https://greenkeeper.io/)
+
 > A caching wrapper around [request].
 >
 > `npm install --save request-easy-cache`
